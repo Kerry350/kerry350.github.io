@@ -1,0 +1,40 @@
+---
+title: Yo, Yeoman
+date: 2013-11-18 01:52:03 
+tags: code
+layout: post
+---
+
+
+![Yeoman logo](/assets/images/2013/Nov/yeoman_logo.png)
+
+Up until now I hadn't used Yeoman, I'd heard good things, but just hadn't had a play. There's no shortage of tutorials out there for it, but I thought I'd do a little write up / tutorial anyway. 
+
+So what is Yeoman? The official site describes Yeoman as a "workflow", and to be honest I think that's pretty damn accurate. Yeoman is comprised of three distinct tools; **Yo** for scaffolding out new projects, **Grunt** (which, if you're not using, you probably should be) for running tasks and your build process and **Bower** for client-side dependency management. Together these come together to create front-end bliss.
+
+As developers we aim to automate as much as we can, and with good reason, automating the repetitive parts of a project leaves more time to get on with the awesome parts. So, there you are, about to begin a new project. Normally you'll manually create a number of files, a `package.json` and a `README` for example. Then you'll start creating your directory structure. Next it's time to drop in some libraries that you always use - jQuery and the like. You can see where I'm going with this, there's a lot of...well, boring stuff. Why not let your new right hand man, Yeoman, take care of it?
+
+First up, we need to install Yeoman: 
+
+`npm install -g yo`
+
+This will install Yeoman (globally hence the `-g` flag) as well as Grunt and Bower.
+
+Next, we need to install some generators, the generators that are relevant to our needs. Think of generators as related chunks of automation. There's generators for Ember projects, Angular projects, Backbone projects, jQuery plugins and so on. In fact, if you can think of it, there's probably a generator for it thanks to the Yeoman community. And, if there's not, you can very easily create your own. 
+
+Let's pretend that we're starting an Angular project. We'll need to install `generator-angular` with `npm install -g generator-angular`. 
+
+Next create a directory for your new and exciting project, and `cd` in to it in a terminal.
+
+Now for the magic. Run `yo angular Magical-App`. This will scaffold out our project for us (Magical App is just the application name, you can omit this as per the docs for this particular generator). You'll be asked a couple of questions, just answer them and press enter. The generator will now go on it's way doing it's thing, and will finally present us with this message: "I'm all done. Running bower install & npm install for you to install the required dependencies. If this fails, try running the command yourself." The ultimate in convenience. 
+
+If you have a little look in your project directory you can see all of the files and folders that the generator created for you. Obviously this will be different for every generator. 
+
+We decide we also need jQuery (you probably wouldn't in an Angular project, but roll with it). So we run: `bower install jquery`. Sweet, Bower goes and does the heavy lifting for us. No more downloading scripts and moving them manually like a peasant. 
+
+And that's pretty much it! There are plenty of generators to try out, and each generator has it's own set of options and 'sub-generators'. For example with the Angular generator we can run `yo angular:controller` to create a new controller - this is a sub-generator. 
+
+If you feel like automating some more of your workflow, give Yeoman a go. 
+
+
+
