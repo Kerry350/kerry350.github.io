@@ -10,7 +10,7 @@ title: Kerry Gallagher
 description: > # this means to ignore newlines until "baseurl:"
  Web Developer based in Newcastle upon Tyne. Loves animals, food and games.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://kerrygallagher.co.uk" # the base hostname & protocol for your site
+url: "" # the base hostname & protocol for your site
 twitter_username: Kerry350
 github_username:  Kerry350
 
