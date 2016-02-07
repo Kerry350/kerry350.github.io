@@ -26,10 +26,10 @@ What I loved about this was that the techniques could be used for applications t
 
 Despite working with node.js for almost two years now (one year in a professional capacity), I've never actually published a module. I'm sure that makes me some sort of anomaly. I've worked on plenty of internal / private modules though, and it's always nice 'n' easy. One thing I'd recommend if you're developing modules locally is `npm link`, this allows project's to use your local (unpublished) modules. 
 
-```
+{% highlight bash %}
 cd <project dir>
 npm link <module dir>
-``` 
+{% endhighlight %}
 
 And this [sets up a set of symlinks for you](https://docs.npmjs.com/cli/link). 
 
@@ -37,10 +37,10 @@ In my projects `package.json` I've always added: `"<module name>":"latest"` to u
 
 Turns out publishing to npm is easy too. 
 
-```
+{% highlight bash %}
 cd <module dir>
 npm publish ./
-```
+{% endhighlight %}
 
 I did need to run `npm adduser` and follow the prompts first, this just makes npm [aware of you as a user](https://docs.npmjs.com/cli/adduser).
 

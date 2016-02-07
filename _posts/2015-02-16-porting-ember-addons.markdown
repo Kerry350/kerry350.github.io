@@ -12,7 +12,7 @@ On the backend there was a Node.js server set up, with two purposes. One was to 
 
 One thing this forced me to do was to re-learn some of Amazon S3 again — it'd admittedly been a while since I'd set anything up from scratch. Some nice discoveries were how easy it was to setup a policy to allow all files within a bucket to be publicly readable:
 
-```
+{% highlight json %}
 {
   "Statement": [
     {
@@ -26,11 +26,11 @@ One thing this forced me to do was to re-learn some of Amazon S3 again — it'd 
     }
   ]
 }
-``` 
+{% endhighlight %}
 
 Also needed a CORS policy for good measure:
 
-```
+{% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
     <CORSRule>
@@ -39,13 +39,13 @@ Also needed a CORS policy for good measure:
         <MaxAgeSeconds>3000</MaxAgeSeconds>
     </CORSRule>
 </CORSConfiguration>
-```
+{% endhighlight %}
 
 This is one of the beauties of single page apps in my eyes. Our backend can worry about being an API layer — of which it's very good at doing so. And a completely separate app / repo can deal with the front-end. The two pair together like cheese and biscuits and everyone is happy. This forces you to think in an entirely different way about a number of problems. I find one of these is authentication, rather than "hacking" a cookie in to your Ember (or Backbone, Angular, React etc) layer and somehow sending that with XHR requests, you are forced to use solutions such as Access Tokens. That is an entirely, and MAHOOSIVE, problem all on it's own though. 
 
 On the front-end this feeds into a custom `store`. The store itself as well as models are injected via an initializer:
 
-```
+{% highlight JavaScript %}
 container.register('store:main', Store, { singleton: true });
 container.register('model:package', Package, { singleton: false });
 container.register('model:npm-user', NpmUser, { singleton: false });
@@ -55,23 +55,23 @@ container.register('model:github-repo', GithubRepo, { singleton: false });
 application.inject('route', 'store', 'store:main');
 application.inject('controller', 'store', 'store:main');
 application.inject('model', 'store', 'store:main');
-```
+{% endhighlight %}
 
 If you haven't used initializers for dependency injection it's a great way to manage a variety of things. I've had great success injecting application wide notification and modal services this way. It's also a great place to bake in your authentication and authorisation layer.
 
 Routes hook in to the `store` as you would expect:
 
-```
+{% highlight javascript %}
 model: function () {
   return this.store.findAll('package');
 }
-```
+{% endhighlight %}
 
 The `findAll()` method does a `return this.find(model);` for us. `find()` itself delegates to internal private methods to either fetch the records in question (from the `.json` file stored in S3), based on when the records were last fetched, or resolves them from its cached records.
 
 When records are fetched they pass through a custom 'parse()' method. 
 
-```
+{% highlight javascript %}
 _parse: function (content) {
     var self = this, pkgRecord, repoRecord, userRecord;
 
@@ -133,25 +133,25 @@ _parse: function (content) {
       self.createOrUpdateRecord('package', pkgRecord);
     });
   }
-```
+{% endhighlight %}
 
 Pretty self-explanatory, it grabs the necessary information from the JSON payload and creates (or updates) a record based on it. What's really nice to see though is how easy it can be to do something like this. Sometimes it can seem a little murky between a basic `ic-ajax` implementation and full-blown Ember Data, but here we have a nice 'n' tidy implementation of a custom store.
 
 On the UI side there's some sorting and filtering implemented. Whilst sorting and filtering can be considered part of your bread and butter, it's always interesting to see how something is implemented. Should you sort, filter or page client side or server side? It always comes down to the project in hand, and how many records you're dealing with. I found that parity between client and server side became much easier when the query params API landed. Which is in use here:
 
-```
+{% highlight javascript %}
 queryParams: {
     query: {as: 'q', replace: true},
     qpSort: 's',
     qpReverse: 'r'
 }
-```
+{% endhighlight %}
 
 Personally I've found by using query params and utilising the `metadata` property in your payload you can achieve most things painlessly. 
 
 Filtering is linked via an input box, which sets a `query` property. Each item uses a separate item controller and observes for a change in `parentController.query`. Which filters down like so:
 
-```
+{% highlight javascript %}
 matchFilters: function(){
     var query = (this.get('parentController.query') || '').trim().toLowerCase();
     return !query ||
@@ -159,11 +159,13 @@ matchFilters: function(){
       this.get('-owner').indexOf(query) >= 0 ||
       this.get('-description').indexOf(query) >= 0;
   }.property('-name', '-owner', '-description', 'parentController.query').readOnly()
-```
+{% endhighlight %}
 
 This is then linked back to the template like so:
 
-`{{bind-attr class='matchFilters::hidden'}}` 
+{% highlight handlebars %}
+  {{bind-attr class='matchFilters::hidden'}}
+{% endhighlight %}
 
 Overall this was a really nice project to 'port', and I enjoyed looking through [Giovanni Collazo](https://www.twitter.com/gcollazo)'s work.
 

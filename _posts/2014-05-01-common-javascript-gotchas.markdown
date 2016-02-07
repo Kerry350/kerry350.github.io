@@ -14,7 +14,7 @@ So why does this matter? Because it's a source of confusion for many starting ou
 
 Imagine that you have a User prototype.
 
-```
+{% highlight javascript %}
 function User() {
 	this.name = 'Kerry';
 };
@@ -29,33 +29,33 @@ User.prototype = {
         flag: 3
     }
 };
-```
+{% endhighlight %}
 
 Then we make two instances of this strange Kerry User. 
 
-```
+{% highlight javascript %}
 var userOne = new User();
 var userTwo = new User();
-```
+{% endhighlight %}
 
 We then change the level on `userOne`'s config.
 
-```
+{% highlight javascript %}
 userOne.config.level = 7;
-```
+{% endhighlight %}
 
 Now we'll check the output of logging both `userOne` and `userTwo`'s config. 
 
-```
+{% highlight javascript %}
 console.log(userOne.config, userTwo.config);
 Object {level: 7, flag: 3} Object {level: 7, flag: 3} 
-```
+{% endhighlight %}
 
 They both have a level of 7, despite the fact we only changed it on one. This is because of the object being passed by reference. 
 
 To circumvent this all we need to do is assign this config object in the constructor. 
 
-```
+{% highlight javascript %}
 function User() {
 	this.name = 'Kerry';
     
@@ -64,7 +64,7 @@ function User() {
         flag: 3
     };
 };
-```
+{% endhighlight %}
 
 Now each instance gets it's own reference to a config object. Of course there's nothing stopping you adding an object on the prototype that you 'clone' from or use `Object.create()` on.
 
@@ -80,7 +80,7 @@ Things may seem to work fine at first but there's a couple of issues here. 1) Or
 
 In JavaScript we can change the context of `this` with `call()` and `apply()`, old news right? But something else we can use is `bind()`. `bind()` is wonderful, it allows us to create a **new** function permanently bound to the context we specify. The key here is that a brand new function will be returned. Given this example: 
 
-```
+{% highlight javascript %}
 var someObj = {
   bar: 'lemon'
 };
@@ -90,7 +90,7 @@ function foo() {
 };
 
 var handler = foo.bind(someObj);
-```
+{% endhighlight %}
 
 The `handler` function and the `foo` function will not be equal, they are completely different functions. The reason this generally slips people up is with event handlers - which is also where `.bind()` happens to be super useful. You may innocently add an event listener like so `el.addEventListener('click', foo.bind(someObj));` and then try to unbind it later like so `el.removeEventListener('click', foo);`, this won't work. You should instead store a reference to `handler` and use that to both add and remove the events. 
 

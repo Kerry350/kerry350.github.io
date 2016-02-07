@@ -22,10 +22,10 @@ In this tutorial we're going to deploy an ember-cli application to [Divshot](htt
 
 8) You'll receive output that looks like this:
 
-```
+{% highlight bash %}
 Application deployed to development
 You can view your app at: http://<APP NAME>.divshot.io
-``` 
+{% endhighlight %}
 
 Great, that's the app deployed. Feel free to navigate to that URL to see your application. You can also use a [custom domain](http://docs.divshot.com/guides/domains), but that's out of the scope of this tutorial.
 

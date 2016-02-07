@@ -32,7 +32,7 @@ So I thought I'd give a little run down to people who haven't used Vagrant befor
 
 12) For now we'll install some core packages and then install Node.js. Pop this in your `bootstrap.sh` file. The `-y` flag is important, it automates prompts being answered with a yes. Don't sit there wondering why installs weren't being performed like me... 
 
-```
+{% highlight bash %}
 #!/usr/bin/env bash
 
 apt-get update -y
@@ -50,7 +50,8 @@ cd node-v0.10.25
 ./configure
 make
 sudo make install
-```
+{% endhighlight %}
+
 13) Update the Vagrantfile to use this bootstrap shell script to provision with. Add `config.vm.provision :shell, :path => "bootstrap.sh"` to the Vagrantfile. 
 
 14) Now, whilst `vagrant up` would run our provisioning for us at this point, we're already running the VM, so instead we'll just use `vagrant reload --provision`, which will skip the boot phase and just provision for us. 

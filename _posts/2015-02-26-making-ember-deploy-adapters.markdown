@@ -14,7 +14,7 @@ For context, ember-deploy is an ember-cli addon for deploying ember-cli applicat
 
 At the heart of it all, you'll need to add `ember-addon` to your `package.json` keywords section as always. Then in your module's main `index.js` export we define the `type` as `ember-deploy-addon`, now ember-deploy will pick up on our adapter when looping through all of the ember addons in the project, .e.g:
 
-```
+{% highlight javascript %}
 var S3Adapter = require('./lib/s3-adapter');
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
     }
   }
 };
-``` 
+{% endhighlight %}
 
 ## Defining the Adapter
 
@@ -39,13 +39,13 @@ When your adapter is initially instantiated it'll be passed a number of things. 
 
 Another thing you'll want to do when working with adapters like this is define a `fingerprint.prepend` property in your `Brocfile.js`. By default ember-cli will generate relative URLs, but as we'll be storing our assets somewhere else these will be pretty useless. By defining this property our asset hosts' URL will be prepended to the asset URLs within our `index.html` file.  
 
-```
+{% highlight javascript %}
 var app = new EmberApp({
   fingerprint: {
     prepend: 'https://s3-us-west-1.amazonaws.com/my-assets-bucket/'
   }
 });
-``` 
+{% endhighlight %}
 
 Other than that, everything is straight forward. Use your adapter within your `deploy.json` file and away you go! 
 

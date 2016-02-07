@@ -24,11 +24,11 @@ In this tutorial we're going to deploy an ember-cli application to Firebase. [Fi
 
 9) You'll receive some output that looks like this:
 
-```
+{% highlight bash %}
 Successfully deployed
 
 Site URL: https://<APP NAME>.firebaseapp.com, or use firebase open
-```
+{% endhighlight %}
 
 Sweet, that's the app deployed. Feel free to navigate to that URL to see your application. You can also use a [custom domain](https://www.firebase.com/docs/hosting/guide/custom-domain.html), but that's out of the scope of this tutorial. 
 

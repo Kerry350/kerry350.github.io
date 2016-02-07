@@ -20,10 +20,10 @@ Lets pretend we've assigned our selector to a variable with `var thing = $('body
  
 Similarly, in it's array-like form doing a `console.log()` on thing would show `__proto__: Object[0]` (notice the index), whereas when you delete the array-like parts you will see `__proto__: Object` as expected. This is due to the following in the jQuery source: 
  
-```javascript
+{% highlight javascript %}
 $.prototype.length == 0;
 $.prototype.splice == [].splice;
-```
+{% endhighlight %}
 
 Not overly helpful to know, but interesting nonetheless :)
 

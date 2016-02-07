@@ -16,7 +16,7 @@ In this article we're going to deploy an Ember app to Amazon S3, we'll be using 
 
 5) We'll now assign an IAM policy to the user so that they have the rights to manipulate our bucket. Click your user in the IAM panel, and then click inline policies. You should see `There are no inline policies to show. To create one, click here.`, click and then choose `Custom Policy`, give it a name and put the following in the `Policy Document` section:
 
-```
+{% highlight json %}
 {
   "Statement": [
     {
@@ -31,13 +31,13 @@ In this article we're going to deploy an Ember app to Amazon S3, we'll be using 
     }
   ]
 }
-```
+{% endhighlight %}
 
 Hit `Apply Policy`
 
 6) Now head back to the S3 panel. We're going to add a bucket policy to our buckets to allow the files to be served publicly. Right click your bucket -> `properties` -> `permissions` -> `Add bucket policy`. Paste the following in:
 
-```
+{% highlight json %}
 {
 	"Statement": [
 		{
@@ -51,7 +51,7 @@ Hit `Apply Policy`
 		}
 	]
 }
-```
+{% endhighlight %}
 
 And click `save`. 
 
@@ -61,17 +61,17 @@ And click `save`.
 
 9) Install all necessary dependencies:
 
-```
+{% highlight bash %}
 npm install ember-deploy
 npm install ember-deploy-s3
 npm install ember-deploy-s3-index
-```
+{% endhighlight %}
 
 10) Create a `deploy.json` file in the root of your project
 
 11) Fill out your credentials (add a block for each environment):
 
-```
+{% highlight json %}
 {
   "development": {
     "store": {
@@ -89,17 +89,17 @@ npm install ember-deploy-s3-index
     }
   }
 }
-```
+{% endhighlight %}
 
 12) Open up your `Brocfile.js` file and add the following:
 
-```
+{% highlight javascript %}
 var app = new EmberApp({
   fingerprint: {
     prepend: '<YOUR ASSET BUCKET URL>'
   }
 });
-```
+{% endhighlight %}
 
 This is really important, without this the asset URLs that are generated will be relative, whereas we want them to point to our bucket. Your asset bucket URL will look something like this depending on region: `//<BUCKET NAME>.s3.amazonaws.com/`. Remember the forward-slash as you'll end up with things wrongly concatenated if you don't. 
 
@@ -125,7 +125,7 @@ Click `save`
 
 21) Would you like to serve your app directly from your bucket (no middle-man server) and have preview capabilities? Then this step is also necessary. We can't serve previews directly from our index bucket as URLs like this: `<BUCKET URL>.com/<REVISION>.html` would break Ember's router. Whilst it would be nice to specify multiple possible `index` files to S3's Static Site Hosting options, this isn't possible. And messing with Ember's `rootUrl` is a terrible idea for this purpose. So what we'll do instead is setup a third bucket - it's okay this bucket will use all of the same setup as before, just copy and paste your policies and amend the IAM policy to have an extra bucket. You can think of this as your `staging` bucket. You can amend your `deploy.json` file like so: 
 
-```
+{% highlight javascript %}
 "staging": {
     "store": {
       "type": "S3",
@@ -133,8 +133,8 @@ Click `save`
       "secretAccessKey": "<KEY>",
       "bucket": "<BUCKET>"
     }
-  }      
-```
+  }
+{% endhighlight %}
 
 There's no need for an `assets` block in here as we'll just be using `ember deploy:index` with an `environment` passed in. 
 

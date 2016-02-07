@@ -6,7 +6,6 @@ layout: post
 ---
 I don't know if this will be of use to anyone, but this is a Gist that I put together (and update periodically) with Git commands that I use frequently. I like having a reference I can quickly go to, and it may benefit someone out there :)
 
-```
 A little lookup for commands I use frequently
 
 Commit all edited files and add a message
@@ -77,5 +76,4 @@ git stash apply
 
 Stop a file being tracked (but do not delete it from the working directory, add to .gitignore etc after this)
 git rm --cached <file/folder>
-```
 
