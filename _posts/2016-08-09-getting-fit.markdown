@@ -52,10 +52,4 @@ My blood pressure has dropped from high, to healthy. I've gone from averaging 14
 
 I'm getting stronger, my personal bests are improving all the time. When I first attempted Russian Twists I managed about 3 and then had to stop. Now I do sets of 20 with an 8kg exercise ball. Tonight I upped my leg press game to 73kg. It's incredibly addictive! I have definition in places now that I didn't know could have definition, and I'm starting to tone up under the fat that's left. I was 9st 7lbs the last time I weighed in; but that means very little to me nowadays, what means a lot more is things like dropping 3 inches off my waist. 
 
-I know that this is a permanent lifestyle change now. If I go back to my old ways it's quite obvious things like my blood pressure will just creep back up. I won't have this abundance of energy. I won't feel this good. I'm glad, I don't want to return to the constant yo-yo of being on a diet. Whilst I am counting things currently as I'm still getting rid of fat, eventually this will just be "life". I want to enter my 30s at the top of my game. 
-
-I guess a picture says a thousand words, and this was my progress after 4 weeks. I can't really post the picture from the start as I'm in my underwear and in all honesty it's probably enough to scar people for life. Sure, there's fat to go, but I'm in the best shape of my life (the bar really was that low). I'm looking forward to the next picture. 
-
-(No idea why I have such strange ribs, because there's definitely no cheating in that picture)
-
-![](/assets/images/4-weeks.jpg)
+I know that this is a permanent lifestyle change now. If I go back to my old ways it's quite obvious things like my blood pressure will just creep back up. I won't have this abundance of energy. I won't feel this good. I'm glad, I don't want to return to the constant yo-yo of being on a diet. Whilst I am counting things currently as I'm still getting rid of fat, eventually this will just be "life". I want to enter my 30s at the top of my game.
