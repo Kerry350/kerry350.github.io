@@ -4,12 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I’m a Web Developer based in Newcastle upon Tyne, currently employed as a Frontend Engineer at [Server Density](https://www.serverdensity.com/). I’ve given talks at a variety of events, such as FrontendNE, JS North East and Super Mondays; given a workshop at jQuery UK — which, at the time, was the biggest front-end conference in the UK; and been published in Netmag magazine.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Outside of work I can usually be found with my Fiancé and Rupert our German Shepherd, gaming, riding on mountain bike trails or wandering in the woods.
