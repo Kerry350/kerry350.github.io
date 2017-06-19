@@ -1,6 +1,6 @@
 ---
-title: Tough Mudder 2017: A first timer's experience 
-date: 2017-06-19
+title: Tough Mudder 2017 — A first timer's experience 
+date: 2017-06-19 15:28:00
 tags:
 layout: post
 ---
